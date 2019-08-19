@@ -1,4 +1,1 @@
-{
-  "name": "CreateDockerProxy",
-  "type": "groovy",
-  "content": "repository.createDockerProxy('docker-proxy', 'https://registry-1.docker.io', 'HUB', null, 5000, null)"
+this [this](https://medium.com/@numb95/setup-nexus-repository-manager-with-nginx-reverse-proxy-and-lets-encrypt-ssl-certificate-on-docker-1c1b05988ce3?sk=9025078deda34020ca7312d110b79673) article for info or `./init.sh` to run.
