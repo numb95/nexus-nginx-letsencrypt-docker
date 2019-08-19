@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  nginx:
+    build: ./confs/nginx
+    ports:
+      - '443:443'
+      - '5000:5000'
+    volumes:
+      - ./confs/certbot/conf:/etc/letsencrypt
+      - ./confs/certbot/www:/var/www/certbot
+    links:
+      - nexus
+    command: [ nginx, '-g', 'daemon off;' ]
+  certbot:
+    build: ./confs/certbot
+    restart: unless-stopped
+    volumes:
+      - ./confs/certbot/conf:/etc/letsencrypt
+      - ./confs/certbot/www:/var/www/certbot
+  nexus:
+    image: sonatype/nexus3
+    volumes:
+      - 'nexus-data:/nexus-data'
+
+volumes:
+  nexus-data:
+
