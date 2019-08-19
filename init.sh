@@ -81,10 +81,10 @@ echo "### Reloading nginx ..."
 docker-compose exec nginx nginx -s reload
 docker-compose up -d
 
-until curl -k -f https://localhost; do
+until curl -sk -f https://localhost; do
     sleep 5
 done
-adminpass=`docker compose exec nexus sudo cat /nexus-data/admin.password`
+adminpass=`docker-compose exec nexus sudo cat /nexus-data/admin.password`
 echo '### nexus admin username: admin'
 echo '### nexus admin password:' $adminpass
 echo '### change your password after login ###'
